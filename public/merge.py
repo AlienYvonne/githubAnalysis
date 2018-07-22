@@ -21,12 +21,12 @@ def merge(folder):
     for i in range(10,13):
         strMonths.append(str(i))
 
-    thisYearNewUsers = {}
-    thisYearEveryMonthUsers = {}
+    result = {}
 
     for year in range(2008,2019):
         newUsers = [0 for x in range(0,12)]
         everyMonthUsers = [0 for x in range(0,12)]
+        result[str(year)] = {}
 
         for month in range(0,12):
             file = cDir + "/" + folder + "/" + str(year) + '-' + strMonths[month] + '-commitsUser.json'
@@ -38,14 +38,11 @@ def merge(folder):
                     allUsers[item] = data[item]
                     newUsers[month] += 1
                 everyMonthUsers[month] += 1
-                
-        thisYearNewUsers[str(year)] = newUsers
-        thisYearEveryMonthUsers[str(year)] = everyMonthUsers
 
-    with open( cDir + "/" + folder  + '/newUsers.json','w',newline="") as f:
-            json.dump(thisYearNewUsers,f)
+        result[str(year)]["newUsers"] = newUsers
+        result[str(year)]["everyUsers"] = everyMonthUsers
 
-    with open(cDir + "/" + folder + '/everyUsers.json','w',newline="") as f:
-            json.dump(thisYearEveryMonthUsers,f)
+    with open( cDir + "/" + folder  + '/analysisUsers.json','w',newline="") as f:
+            json.dump(result,f)
 
 merge('JSON')

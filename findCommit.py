@@ -11,10 +11,11 @@ def getCommitData(src):
     dst['message'] = f['message']
     dst['comments_url'] = src['comments_url']
     return dst
+
 def getCommit(repo):
 
     url = 'https://api.github.com/repos/'+repo+"?access_token=8f6085fc4cf4b501a7ccad1a3aadc3f98f51384a"
-
+    print("url:",url)
     urlRequest = request.Request(url)
     urlResponse = request.urlopen(urlRequest)
 
@@ -155,7 +156,7 @@ def getIssue(repo):
         if listLink:
             nextLink = listLink[0]
             print("nextLink: ", nextLink)
-            time.sleep(10)
+            time.sleep(5)
             issueResponse = request.urlopen(nextLink)
             issueData = issueResponse.read().decode('utf-8')
             issueData = json.loads(issueData)

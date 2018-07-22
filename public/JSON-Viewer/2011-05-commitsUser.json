@@ -1,0 +1,1 @@
+{"kapil.ratnani@iiitb.net": [{"date": "2011-05-30T16:59:25Z", "message": ""}, {"date": "2011-05-30T16:57:31Z", "message": "1. Fixed bug - 3305433 do not find error on second try and do not build tree\n2. Fixed a memory leak..was not deallocating memory allocated to json strings"}]}

@@ -1,5 +1,5 @@
 
-function drawChart(folder,title){
+function drawChartForNewUsers(folder,title){
 
   var file = folder + "/" + title + ".json";
   $.getJSON(file,function(allData){
@@ -132,7 +132,7 @@ function drawChart(folder,title){
     // 增加图例
     svg = d3.select("body")
             .append("svg")
-            .attr("width",200)
+            .attr("width",400)
             .attr("height",100);
     svg.append("rect")
         .attr("x",10)
@@ -145,7 +145,7 @@ function drawChart(folder,title){
     svg.append("text")
         .attr("x",50)
         .attr("y",20)
-        .text("当月新增代码提交者");
+        .text(folder + "-当月新增代码提交者");
 
   });
 
@@ -153,4 +153,4 @@ function drawChart(folder,title){
 
 //drawChart("JSON","newUsers");
 //drawChart("JSON","everyUsers");
-drawChart("JSON","analysisUsers")
+drawChartForNewUsers("d3","analysisUsers")

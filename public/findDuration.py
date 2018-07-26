@@ -53,16 +53,14 @@ def findTenure(folder):
             if (ts > end):
                 end = ts
 
-        tenures[user]["start"] = str(start.tm_year)+"-"+str(start.tm_mon)+"-"+str(start.tm_mday)
-        tenures[user]["end"] =  str(end.tm_year)+"-"+str(end.tm_mon)+"-"+str(end.tm_mday)
+        tenures[user]["start"] = str(start.tm_year)+"-"+"%02d" % start.tm_mon+"-"+"%02d"%start.tm_mday
+        tenures[user]["end"] =  str(end.tm_year)+"-"+"%02d" %end.tm_mon+"-"+ "%02d" % end.tm_mday
 
         start = datetime.datetime(start.tm_year,start.tm_mon,start.tm_mday)
         end = datetime.datetime(end.tm_year,end.tm_mon,end.tm_mday)
         tenure = (end - start).days
 
         tenures[user]["tenure"] = tenure
-
-
 
     with open(cDir + "tenures.json", 'w') as f:
         json.dump(tenures,f)

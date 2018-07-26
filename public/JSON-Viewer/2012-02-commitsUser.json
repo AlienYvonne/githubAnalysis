@@ -1,1 +1,0 @@
-{"k.ratnani@sap.com": [{"date": "2012-02-20T17:41:56Z", "message": "added change log"}, {"date": "2012-02-20T17:40:53Z", "message": "moved to version 1.19"}, {"date": "2012-02-20T17:40:38Z", "message": "added new command to format JSON"}, {"date": "2012-02-20T17:40:13Z", "message": "added check for empty string, writes an error message for the same"}]}

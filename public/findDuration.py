@@ -70,5 +70,6 @@ folders = ["JSON","d3"]
 #for folder in folders:
 #    findAllUsers(folder)
 
-for folder in folders:
-   findTenure(folder)
+#for folder in folders:
+   #findTenure(folder)
+findTenure("javascript")

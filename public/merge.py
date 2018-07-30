@@ -45,4 +45,4 @@ def merge(folder):
     with open( cDir + "/" + folder  + '/analysisUsers.json','w',newline="") as f:
             json.dump(result,f)
 
-merge('d3')
+merge('javascript')

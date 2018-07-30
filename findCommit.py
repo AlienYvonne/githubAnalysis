@@ -17,8 +17,10 @@ def getCommitData(src):
 def getCommit(repo):
     if(repo == "d3/d3"):
         prefix = "public/d3/"
-    else:
+    elif (repo == "json"):
         prefix = "public/JSON/"
+    elif( repo == "airbnb/javascript"):
+        prefix = "public/javascript/"
 
     url = 'https://api.github.com/repos/'+repo+"?access_token=8f6085fc4cf4b501a7ccad1a3aadc3f98f51384a"
 
@@ -47,7 +49,7 @@ def getCommit(repo):
             print(commitsUrl)
 
             thisMonthUser = {}
-            time.sleep(1)
+            time.sleep(3)
             commitsResponse = request.urlopen(commitsUrl)
             commitsData = commitsResponse.read().decode('utf-8')
             commitsData = json.loads(commitsData)
@@ -68,7 +70,7 @@ def getCommit(repo):
                 if(listLink):
                     nextLink = listLink[0]
                     print("nextLink: " , nextLink)
-                    time.sleep(1)
+                    time.sleep(3)
                     commitsResponse = request.urlopen(nextLink)
                     commitsData = commitsResponse.read().decode('utf-8')
                     commitsData = json.loads(commitsData)
@@ -106,7 +108,10 @@ def getCommit(repo):
             with open(prefix + thisMonth + "-originalCommits.json",'w') as f:
                 json.dump(originalCommits,f)
 
+    with open("allUsers.json","w") as f:
+        json.dump(allUsers,f)
 
-baseRepo = ["d3/d3"] #"nlohmann/json",]#,"atom/atom"]
+
+baseRepo = ["airbnb/javascript"]#]"d3/d3"] #"nlohmann/json",]#,"atom/atom"]
 for item in baseRepo:
    getCommit(item)

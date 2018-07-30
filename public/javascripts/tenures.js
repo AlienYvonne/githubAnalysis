@@ -171,4 +171,4 @@ function drawTenure(folder){
   })
 }
 
-drawTenure("JSON")
+drawTenure("javascript")

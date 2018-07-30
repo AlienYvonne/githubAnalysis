@@ -153,4 +153,4 @@ function drawChartForNewUsers(folder,title){
 
 //drawChart("JSON","newUsers");
 //drawChart("JSON","everyUsers");
-drawChartForNewUsers("d3","analysisUsers")
+drawChartForNewUsers("javascript","analysisUsers")

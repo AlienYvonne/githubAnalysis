@@ -65,7 +65,7 @@ def findTenure(folder):
     with open(cDir + "tenures.json", 'w') as f:
         json.dump(tenures,f)
 
-folders = ["JSON","d3"]
+folders = ["json","d3"]
 
 #for folder in folders:
 #    findAllUsers(folder)

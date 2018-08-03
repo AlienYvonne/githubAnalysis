@@ -105,7 +105,6 @@ def analyzeIssues(repo):
     insideReports = 0
 
     for item in allReporter:
-
         if item in allUsersId:
             insideReporterCount += 1
         allReporterCount += 1

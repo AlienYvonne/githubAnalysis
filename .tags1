@@ -4,3 +4,11 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+createError	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var createError = require('http-errors');$/;"	variable	line:1
+express	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var express = require('express');$/;"	variable	line:2
+path	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var path = require('path');$/;"	variable	line:3
+cookieParser	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var cookieParser = require('cookie-parser');$/;"	variable	line:4
+logger	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var logger = require('morgan');$/;"	variable	line:5
+indexRouter	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var indexRouter = require('.\/routes\/index');$/;"	variable	line:7
+usersRouter	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var usersRouter = require('.\/routes\/users');$/;"	variable	line:8
+app	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\app.js	/^var app = express();$/;"	variable	line:10

@@ -11,11 +11,14 @@ def getIsssues(repo):
     organ = repos[0]
     folder = repos[1]
 
-    cDir = "public/" + folder + "/" + "issues/"
+    cDir = "public/" + folder + "/" + "month/issues/"
     isExists = os.path.exists(cDir)
     if not isExists:
         os.makedirs(cDir)
 
+    for year in range(2008,2019):
+        for month in range(1,13):
+            
     url = 'https://api.github.com/repos/'+repo+ \
             "/issues?access_token=8f6085fc4cf4b501a7ccad1a3aadc3f98f51384a" \
             "&state=all&filter=all"

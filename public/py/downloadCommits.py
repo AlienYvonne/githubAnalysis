@@ -3,6 +3,7 @@ from urllib import request
 import json
 import re
 import time
+import os
 
 def getCommitData(src):
     dst = {}
@@ -18,7 +19,7 @@ def fetchCommit(year,month,data,prefix):
     allUsers = {}
     if(os.path.exists(prefix+'allUsers.json')):
         with open(prefix + 'allUsers.json','r') as f:
-            allUsers = json.loads(f)
+            allUsers = json.loads(f.read())
 
     thisMonth = str(year) + "-" + "%02d" % month
     start = thisMonth + '-01T00:00:00Z'

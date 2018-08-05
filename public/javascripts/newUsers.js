@@ -1,7 +1,9 @@
 
-function drawChartForNewUsers(folder,title){
-
-  var file = folder + "/" + title + ".json";
+function drawChartForNewUsers(folder){
+  console.log("I am drawChartForNewUsers() function.");
+  var file = "data/" + folder + "/" + "analysisUsers.json";
+  var title = "analysisUsers";
+  console.log(file);
   $.getJSON(file,function(allData){
     var maxData = 0;
     console.log("all:", allData);
@@ -151,7 +153,7 @@ function drawChartForNewUsers(folder,title){
 
 }
 
+console.log("I am newUsers.js.");
 //drawChart("JSON","newUsers");
 //drawChart("JSON","everyUsers");
 //drawChartForNewUsers("javascript","analysisUsers")
-console.log("newUsers.");

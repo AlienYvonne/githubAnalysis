@@ -2,10 +2,10 @@
 import json
 
 
-def getOwnership(folder):
-    cDir = "public/" + folder + "/"
-
-    for year in range(2008,2019):
+def getOwnership(folder,endYear):
+    cDir = "public/data/" + folder + "/"
+    result = {}
+    for year in range(2008,endYear):
         ownerships = {}
         counts = {}
 
@@ -33,8 +33,7 @@ def getOwnership(folder):
             B += 1
         if( B == 0):
              continue
-        print(folder,"year:",year," ", "AF:",A/B)
+        result[folder + "-" + year] = A/B
 
-getOwnership("json")
-getOwnership("d3")
-getOwnership("javascript")
+    with open(cDir + "ownership.json",'w') as f:
+        json.dump(result,f)

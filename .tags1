@@ -4,3 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+express	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\routes\initial.js	/^var express = require('express');$/;"	variable	line:1
+router	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\routes\initial.js	/^var router = express.Router();$/;"	variable	line:2
+fetchData	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\routes\initial.js	/^function fetchData(repo,start,end){$/;"	function	line:50
+fetchData	C:\Users\ychlx\Desktop\暑期实习\脚本\visProj\routes\initial.js	/^function fetchData(repo,start,end){$/;"	function	line:50

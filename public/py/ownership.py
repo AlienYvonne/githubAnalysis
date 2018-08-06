@@ -5,7 +5,7 @@ import json
 def getOwnership(folder,endYear):
     cDir = "public/data/" + folder + "/"
     result = {}
-    for year in range(2008,endYear):
+    for year in range(2008,endYear+1):
         ownerships = {}
         counts = {}
 
@@ -33,7 +33,7 @@ def getOwnership(folder,endYear):
             B += 1
         if( B == 0):
              continue
-             # "(%s-%d)%(folder,year) "
+             # %s-%d" % (folder,year) 
         result[folder + "-" + str(year)] = A/B
 
     with open(cDir + "ownership.json",'w') as f:

@@ -9,7 +9,7 @@ def analyzeCommits(repo,start,end):
 
     startYear = int(start[0:4])
     startMonth = start[5:7]
-    endYear = int(end[0:4]) + 1
+    endYear = int(end[0:4])
     endMonth = end[5:7]
 
     # 生成所需要的数据
@@ -24,11 +24,12 @@ def analyzeCommits(repo,start,end):
 
     # 团队多样性的度量
     # 分析代码贡献率 核心团队规模 扇形图
+    contribution.findCon(repo,endYear,startYear,startMonth,endYear,endMonth)
 
     # 项目规范性的度量
     # 计算AF值
-    contribution.findCon(repo,endYear)
-    ownership.getOwnership(repo,endYear)
+
+    ownership.getOwnership(repo)
 
 
 def analyze(repo,start,end):

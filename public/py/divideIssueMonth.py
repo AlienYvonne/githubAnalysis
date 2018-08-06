@@ -3,29 +3,45 @@ import re
 import os
 import time
 import datetime
-def divideIssueMonth(repo):
+def divideIssueMonth(repo,endYear):
     repos = repo.split(sep="/")
     folder = repos[1]
-    issuesDir = "F:/Github/githubAnalysis-master (2)/githubAnalysis-master/public/" + folder + "/" + "dealdIssues/"
-    files = os.listdir(issuesDir)
+    cDir = "public/data/" + repo+ "/" + "issues/"
+
+    files = os.listdir(cDir)
     # print(files)
     pages=len(files)
     print(pages)
+    pullRequests = []
+    issues_created = {}
 
-
-    for page in range(1,pages):
-        with open(issuesDir + "issues-"+str(page)+".json",'r') as f:
+    for page in range(1,pages+1):
+        print(page)
+        with open(cDir + "allIssues-"+str(page)+".json",'r') as f:
             data = json.loads(f.read())
-            print(data)
-            for item in data:
-                date = item["created_at"];
-                newdate=date[0:7]
-                newpath = r"F:/Github/githubAnalysis-master (2)/githubAnalysis-master/public/{}/newIssues".format(folder)
-                if not os.path.exists(newpath):
-                    os.makedirs(newpath)
-                with open("F:/Github/githubAnalysis-master (2)/githubAnalysis-master/public/"+folder + "/" + "newIssues/" + str(newdate)+".json", "w",newline="") as f:
-                    json.dump(item, f)
 
-repos = ["d3/d3","airbnb/javascript","nlohmann/json"]
-for item in repos:
-    divideIssueMonth(item)
+            for item in data:
+                # 拆分出pull_request
+                if ("pull_request" in item):
+                    pullRequests.append(item)
+                    continue
+                date = item["created_at"];
+                date=date[0:7]
+
+                if (date not in issues_created):
+                    issues_created[date] = []
+                issues_created[date].append(item)
+
+
+    with open("public/data/" + repo + "/pullRequests.json",'w') as f:
+        json.dump(pullRequests,f)
+
+    for year in range(2008,int(endYear) + 1):
+        for month in range(1,13):
+            date = "%d-%02d" %(year,month)
+            if( date not in issues_created):
+                with open(cDir + date + ".json",'w') as f:
+                    json.dump({},f)
+            else :
+                with open(cDir + date + ".json",'w') as f:
+                    json.dump(issues_created[date],f)

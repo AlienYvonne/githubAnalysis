@@ -23,7 +23,7 @@ def merge(folder,endYear):
 
     result = {}
 
-    for year in range(2008,endYear):
+    for year in range(2008,endYear+1):
         newUsers = [0 for x in range(0,12)]
         everyMonthUsers = [0 for x in range(0,12)]
         result[str(year)] = {}

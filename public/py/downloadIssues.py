@@ -5,20 +5,20 @@ import requests
 from urllib import request
 import re
 import time
+import getURL
+import divideIssueMonth
+import shutil
 
-def getIsssues(repo):
+# 下载所有Issues
+def getAllIssues(repo):
     repos = repo.split(sep="/")
     organ = repos[0]
     folder = repos[1]
 
-    cDir = "public/data" + repos+ "/" + "month/issues/"
-
-    isExists = os.path.exists(cDir)
-    if not isExists:
-        os.makedirs(cDir)
-
-    for year in range(2008,2019):
-        for month in range(1,13):
+    cDir = "public/data/" + repo+ "/" + "issues/"
+    if(os.path.exists(cDir)):
+        shutil.rmtree(cDir)
+    os.makedirs(cDir)
 
     url = 'https://api.github.com/repos/'+repo+ \
             "/issues?access_token=8f6085fc4cf4b501a7ccad1a3aadc3f98f51384a" \
@@ -51,3 +51,9 @@ def getIsssues(repo):
 
         else:
             break
+def getIssues(repo,endDate):
+    endDate = time.strptime(endDate[0:10],"%Y-%m-%d")
+    endYear = endDate.tm_year
+
+    getAllIssues(repo)
+    divideIssueMonth.divideIssueMonth(repo,endYear)

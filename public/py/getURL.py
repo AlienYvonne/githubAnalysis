@@ -48,6 +48,6 @@ def getURL(url):
             if new_st != st:
                 st = new_st
             returnData = json.loads(r.data)
-            return returnData
+            return r
     # count = count + 1
     # url = r.headers['Link'].split('<')[1].split('>')[0]

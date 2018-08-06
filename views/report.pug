@@ -6,4 +6,6 @@ html
   body
     h1 #{title}
     script(src='javascripts/newUsers.js')
-    script(type="text/javascript") drawChartForNewUsers("#{title}")
+    script(src='javascripts/tenures.js')
+    script(type="text/javascript") drawChartForNewUsers("#{title}") 
+    script(type="text/javascript") drawTenure("#{title}")

@@ -33,7 +33,8 @@ def getOwnership(folder,endYear):
             B += 1
         if( B == 0):
              continue
-        result[folder + "-" + year] = A/B
+             # "(%s-%d)%(folder,year) "
+        result[folder + "-" + str(year)] = A/B
 
     with open(cDir + "ownership.json",'w') as f:
         json.dump(result,f)

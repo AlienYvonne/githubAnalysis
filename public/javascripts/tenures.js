@@ -129,7 +129,7 @@ function drawChartTenure(anchor, data){
 
 }
 function drawTenure(folder){
-  var file = folder + "/" +"tenures.json";
+  var file = "data/" + folder + "/" +"tenures.json";
   console.log(file);
   $.getJSON(file,function(data){
     var array = new Array(300);
@@ -170,5 +170,3 @@ function drawTenure(folder){
 
   })
 }
-
-drawTenure("javascript")

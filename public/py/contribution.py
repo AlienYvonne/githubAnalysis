@@ -28,11 +28,11 @@ def findCon(folder,endYear):
             for commit in data:
                 commitUrl = commit["url"]
                 count += 1
-                print("commitUrl:",commitUrl)
-                # urlResponse = getURL(commitUrl)
+                #print("commitUrl:",commitUrl)
+                urlResponse = getURL.getURL(commitUrl)
                 #urlResponse = request.urlopen(commitUrl + "?access_token=8f6085fc4cf4b501a7ccad1a3aadc3f98f51384a")
-                # commitInfo = json.loads(urlResponse.read().decode("utf-8"))
-                commitInfo = getURL.getURL(commitUrl)
+                commitInfo = json.loads(urlResponse.data)
+                #commitInfo = getURL.getURL(commitUrl)
 
                 user = commitInfo["commit"]["author"]["email"]
                 date = commitInfo["commit"]["author"]["date"]

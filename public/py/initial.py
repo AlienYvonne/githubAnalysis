@@ -13,7 +13,7 @@ def mkdir(path):
     flag = os.path.exists(path)
     if(not flag):
         os.makedirs(path)
-'''
+
 print(sys.argv)
 
 repo = sys.argv[1]
@@ -24,7 +24,7 @@ paras = ["nlohmann/json","2008-01-01","2018-08-08"]
 repo = paras[0]
 start = paras[1]
 end = paras[2]
-
+'''
 # 判断该仓库是否在github上存在
 
 try:
@@ -37,6 +37,7 @@ try:
     print(data)
 
 except urllib.error.HTTPError:
+    print(url)
     print('No such repo.')
     sys.exit()
 except urllib.error.URLError:
@@ -48,8 +49,13 @@ except urllib.error.URLError:
 path = './public/data/' + repo + '/'
 mkdir(path);
 
+# 新建timeStampStart，保存下载开始时间
+with open(path+'/timeStampStart','w') as f:
+    timeStamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    f.write(timeStamp)
+
 # 下载所有commits
-# downloadCommits.getCommit(repo,start,end)
+downloadCommits.getCommit(repo,start,end)
 
 # 下载所有Issues
 # downloadIssues.getIssues(repos,start,end)
@@ -57,8 +63,8 @@ mkdir(path);
 #对数据进行分析 分析时是对所有的数据
 analyze.analyze(repo,start,end)
 
-# 生成timeStamp文件保存更新时间
-with open(path+'/timeStamp','w') as f:
+# 生成timeStampEnd文件保存更新时间
+with open(path+'/timeStampEnd','w') as f:
     timeStamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(timeStamp)
     f.write(timeStamp)

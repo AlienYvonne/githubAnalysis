@@ -33,10 +33,10 @@ def fetchCommit(year,month,data,prefix):
 
     thisMonthUser = {}
     #time.sleep(3)
-    #commitsResponse = request.urlopen(commitsUrl)
+    commitsResponse =getURL.getURL(commitsUrl)
     #commitsData = commitsResponse.read().decode('utf-8')
-    #commitsData = json.loads(commitsData)
-    commitsData = getURL.getURL(commitsUrl)
+    commitsData = json.loads(commitsResponse.data)
+    # commitsData = getURL.getURL(commitsUrl)
     countCommits = 0
     dealdData = []
 
@@ -55,10 +55,10 @@ def fetchCommit(year,month,data,prefix):
             nextLink = listLink[0]
             print("nextLink: " , nextLink)
             #time.sleep(3)
-            #commitsResponse = request.urlopen(nextLink)
-            #commitsData = commitsResponse.read().decode('utf-8')
-            #commitsData = json.loads(commitsData)
-            commitsData = getURL.getURL(nextlink)
+            commitsResponse = getURL.getURL(nextLink)#request.urlopen(nextLink)
+            commitsData = commitsResponse.data
+            commitsData = json.loads(commitsData)
+
             originalCommits = originalCommits + commitsData
 
             headData = str(commitsResponse.headers)
@@ -122,7 +122,7 @@ def getCommit(repo,startDate,endDate):
     data = urlResponse.read().decode('utf-8')
     data = json.loads(data)
     '''
-    data = getURL.getURL(url)
+    data = json.loads(getURL.getURL(url).data)
 
     startDate = time.strptime(startDate[0:10],"%Y-%m-%d")
     endDate = time.strptime(endDate[0:10],"%Y-%m-%d")

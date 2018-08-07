@@ -2,6 +2,7 @@ import sys
 import os
 import downloadCommits
 import downloadIssues
+import downloadComments
 import datetime
 import time
 import analyze
@@ -60,13 +61,18 @@ with open(path+'/timeStampStart','w') as f:
 # downloadCommits.getCommit(repo,start,end)
 
 # 下载所有Issues
-downloadIssues.getIssues(repo,end)
+# downloadIssues.getIssues(repo,end)
+
+# 下载所有comments
+downloadComments.downloadComments(repo,start,end)
 
 #对数据进行分析 分析时是对所有的数据
 # analyze.analyze(repo,start,end)
 
 # 生成timeStampEnd文件保存更新时间
+'''
 with open(path+'/timeStampEnd','w') as f:
     timeStamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(timeStamp)
     f.write(timeStamp)
+'''

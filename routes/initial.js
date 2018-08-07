@@ -40,15 +40,18 @@ router.post('/', function(req, res, next) {
     timeStampEnd = './public/data/' + repo + '/timeStampEnd';
 
     fs.open(timeStampEnd, 'r', (err, fd) => {
-      if (err.code == 'ENOENT') {
+      if(err){
+        if (err.code == 'ENOENT') {
+          state += 'Downloading the data. Please wait for a minute...';
+          res.render('initial', {
+            title: state
+          });
 
-        state += 'Downloading the data. Please wait for a minute...';
-        res.render('initial', {
-          title: state
-        });
-
-        return;
+          return;
+        }
+        throw err;
       }
+
 
       fs.readFile(timeStampEnd, (err, data) => {
         start = data.toString().slice(0, 10);

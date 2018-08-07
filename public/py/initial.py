@@ -16,7 +16,7 @@ def mkdir(path):
     if(not flag):
         os.makedirs(path)
 
-'''
+
 print(sys.argv)
 
 repo = sys.argv[1]
@@ -27,7 +27,7 @@ paras = ["nlohmann/json","2008-01-01","2018-08-08"]
 repo = paras[0]
 start = paras[1]
 end = paras[2]
-
+'''
 # 判断该仓库是否在github上存在
 
 try:
@@ -58,16 +58,16 @@ with open(path+'/timeStampStart','w') as f:
     f.write(timeStamp)
 
 # 下载所有commits
-# downloadCommits.getCommit(repo,start,end)
+downloadCommits.getCommit(repo,start,end)
 
 # 下载所有Issues
-# downloadIssues.getIssues(repo,end)
+downloadIssues.getIssues(repo,end)
 
 # 下载所有comments
 downloadComments.downloadComments(repo,start,end)
 
 #对数据进行分析 分析时是对所有的数据
-# analyze.analyze(repo,start,end)
+analyze.analyze(repo,start,end)
 
 # 生成timeStampEnd文件保存更新时间
 '''
